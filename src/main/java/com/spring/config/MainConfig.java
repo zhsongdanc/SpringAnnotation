@@ -1,5 +1,7 @@
 package com.spring.config;
 
+import com.spring.bean.MyOrange;
+import com.spring.bean.Orange;
 import com.spring.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import sun.tools.serialver.SerialVer;
 
 //配置类 就是 配置文件
 @Configuration //告诉spring，这是一个配置类
@@ -25,5 +26,12 @@ public class MainConfig {
     @Bean(value = "person1")
     public Person person() {
         return new Person("lisi", "20");
+    }
+
+    @Bean
+    public MyOrange myOrange(Orange orange) {
+        MyOrange myOrange = new MyOrange();
+        myOrange.setOrange(orange);
+        return myOrange;
     }
 }

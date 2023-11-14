@@ -1,5 +1,7 @@
 package com.spring.maintest;
 
+import com.spring.bean.Color;
+import com.spring.bean.MyOrange;
 import com.spring.bean.Person;
 import com.spring.config.MainConfig;
 import org.springframework.context.ApplicationContext;
@@ -19,14 +21,18 @@ public class MainTest {
 
     //只使用注解的方式
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
-        Person person = applicationContext.getBean(Person.class);
-        System.out.println(person);
+        String scanPackage = "com.spring";
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(scanPackage);
 
-        String[] names = applicationContext.getBeanNamesForType(Person.class);
 
-        for (String name :
-                names) {
+        MyOrange myOrange = applicationContext.getBean(MyOrange.class);
+
+        System.out.println(myOrange);
+
+        System.out.println("=========");
+        String[] names = applicationContext.getBeanNamesForType(Color.class);
+
+        for (String name : names) {
             System.out.println(name);
         }
 
